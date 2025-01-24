@@ -1,4 +1,4 @@
-import { getPokemonDetails } from "@/api/pokemos";
+import { getPokemonDetails } from "@/api/pokemon";
 import { useQuery } from "@tanstack/react-query";
 
 export function usePokemonDetails(name: string) {
