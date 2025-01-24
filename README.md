@@ -1,6 +1,16 @@
-# 🚀 Proyecto Next.js
+# 🚀 Proyecto Next.js de Pokémones
 
-Este es un proyecto [Next.js](https://nextjs.org) creado con [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Este es un proyecto Next.js creado con create-next-app.
+
+## 🌟 Característica Destacada: Generación de Datos con IA
+
+### 🤖 Descripción de Pokémones con el modelo GPT-4o
+
+Tecnológica:
+
+Utilicé el modelo GPT-4o de OpenAI para generar descripciones estructuradas de Pokémones
+Generación de datos JSON detallados y precisos
+Descripción única para cada Pokémon con información completa
 
 ## 🛠 Comenzando
 
