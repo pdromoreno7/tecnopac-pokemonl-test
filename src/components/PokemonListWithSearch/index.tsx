@@ -8,10 +8,10 @@ import { usePokemons } from '@/hooks/usePokemons';
 
 function PokemonListWithSearch() {
   const [searchTerm, setSearchTerm] = useState('');
-  console.log('🚀 ~ PokemonListWithSearch ~ searchTerm:', searchTerm);
   const [selectedPokemon, setSelectedPokemon] = useState<string | null>(null);
 
-  const { data: pokemons, isLoading, isError, error } = usePokemons(selectedPokemon);
+  const { data: pokemons, isLoading, isError } = usePokemons(selectedPokemon);
+  console.log('🚀 ~ PokemonListWithSearch ~ isError:', isError);
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
@@ -22,11 +22,16 @@ function PokemonListWithSearch() {
   };
 
   if (isLoading) return <SpinnerLoading />;
-  if (isError) return <div>Error: {error.message}</div>;
+
   return (
     <div>
       <InputSearch onChange={handleSearchChange} onSubmit={handleSearchSubmit} />
       {pokemons && <PokemonList pokemons={pokemons} />}
+      {isError && (
+        <p className="text-red-500 text-center text-2xl">
+          Lo sentimos, no se encotraron pokemons con el nombre: {selectedPokemon}
+        </p>
+      )}
     </div>
   );
 }

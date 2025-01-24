@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Proyecto Next.js
 
-## Getting Started
+Este es un proyecto [Next.js](https://nextjs.org) creado con [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-First, run the development server:
+## 🛠 Comenzando
+
+### Instalación de Dependencias
+
+Instala las dependencias usando tu gestor de paquetes preferido:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install    # npm
+yarn install   # Yarn
+pnpm install   # pnpm
+bun install    # Bun
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Ejecutar Servidor de Desarrollo
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Inicia el servidor de desarrollo:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run dev    # npm
+yarn dev       # Yarn
+pnpm dev       # pnpm
+bun dev        # Bun
+```
 
-## Learn More
+🌐 El servidor estará disponible en [http://localhost:3000](http://localhost:3000)
 
-To learn more about Next.js, take a look at the following resources:
+## 📂 Estructura del Proyecto
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Directorios Principales
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+| Carpeta/Archivo | Descripción                                                     |
+| --------------- | --------------------------------------------------------------- |
+| `.next/`        | Archivos generados por Next.js durante construcción y ejecución |
+| `public/`       | Archivos estáticos públicos                                     |
+| `src/`          | Código fuente principal del proyecto                            |
+| `cypress/`      | Pruebas end-to-end con Cypress                                  |
 
-## Deploy on Vercel
+### Archivos de Configuración
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Archivo              | Propósito                     |
+| -------------------- | ----------------------------- |
+| `next.config.ts`     | Configuración de Next.js      |
+| `tsconfig.json`      | Configuración de TypeScript   |
+| `tailwind.config.ts` | Configuración de Tailwind CSS |
+| `eslint.config.mjs`  | Configuración de ESLint       |
+| `cypress.config.ts`  | Configuración de Cypress      |
+| `jest.config.ts`     | Configuración de Jest         |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## ✨ Características Principales
+
+- 🔥 **Desarrollo Rápido**: Servidor con hot-reloading
+- 🧪 **Pruebas Completas**: Configuración de Cypress y Jest
+- 🧹 **Calidad de Código**: ESLint para mantener estándares
+- 🎨 **Estilos Eficientes**: Tailwind CSS
+- ⚡ **Compilación Veloz**: Compilador SWC
+
+## 📚 Documentación Adicional
+
+Para más detalles, consulta la documentación oficial de cada herramienta:
+
+- [Next.js Docs](https://nextjs.org/docs)
+- [Tailwind CSS](https://tailwindcss.com)
+- [Cypress](https://docs.cypress.io)
+- [Jest](https://jestjs.io/docs/getting-started)

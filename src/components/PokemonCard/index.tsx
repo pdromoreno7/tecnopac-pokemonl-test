@@ -7,7 +7,6 @@ interface PokemonCardProps {
   image: string;
 }
 function PokemonCard({ name, image }: PokemonCardProps) {
-  console.log('🚀 ~ PokemonCard ~ name:', name);
   return (
     <Link href={`/${name}`}>
       <Card className="cursor-pointer h-[450px]">
@@ -15,7 +14,6 @@ function PokemonCard({ name, image }: PokemonCardProps) {
           <Image
             alt={name}
             className="relative w-full object-contain transition-transform duration-500 ease-in-out transform hover:scale-105"
-            // className="relative w-96 h-96 object-contain transition-transform duration-500 ease-in-out transform hover:scale-105"
             radius="lg"
             src={image}
             width="100%"
