@@ -66,3 +66,17 @@ Para más detalles, consulta la documentación oficial de cada herramienta:
 - [Tailwind CSS](https://tailwindcss.com)
 - [Cypress](https://docs.cypress.io)
 - [Jest](https://jestjs.io/docs/getting-started)
+
+## 🧪 Notas sobre Pruebas
+
+⚠️ Desafíos con Pruebas Unitarias:
+Durante el desarrollo, se encontraron problemas con la configuración de Jest y React Testing Library. Las dificultades específicas incluyeron:
+
+Incompatibilidades con dependencias
+Errores en el método render
+Problemas para realizar mocks de componentes y hooks
+
+🌟 Solución Implementada:
+
+Pruebas end-to-end completamente automatizadas con Cypress
+Cobertura de pruebas de integración y flujos de usuario
