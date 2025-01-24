@@ -3,23 +3,17 @@
 import { Progress } from '@heroui/react';
 import { useEffect, useState } from 'react';
 
-interface Stat {
-  name: string;
-  value: number;
-  color?: 'default' | 'success';
+interface StatsProps {
+  stats: {
+    base_stat: number;
+    stat: {
+      name: string;
+    };
+  }[];
 }
 
-export function StatsSection() {
+export function StatsSection({ stats }: StatsProps) {
   const [animate, setAnimate] = useState(false);
-
-  const stats: Stat[] = [
-    { name: 'HP', value: 45 },
-    { name: 'Attack', value: 49 },
-    { name: 'Defense', value: 49 },
-    { name: 'Sp. Atk', value: 65, color: 'success' },
-    { name: 'Sp. Def', value: 65, color: 'success' },
-    { name: 'Speed', value: 45 },
-  ];
 
   useEffect(() => {
     setAnimate(true);
@@ -27,15 +21,15 @@ export function StatsSection() {
 
   return (
     <div className="flex flex-col gap-4">
-      {stats.map((stat) => (
-        <div key={stat.name} className="flex items-center gap-4">
-          <span className="w-16 text-sm text-default-600">{stat.name}</span>
-          <span className="w-8 text-sm tabular-nums">{stat.value}</span>
+      {stats?.map((stat) => (
+        <div key={stat.stat.name} className="flex items-center gap-4">
+          <span className="w-16 text-sm text-default-600">{stat.stat.name}</span>
+          <span className="w-8 text-sm tabular-nums">{stat.base_stat}</span>
           <Progress
-            aria-label={`${stat.name} stat`}
-            value={animate ? stat.value : 0}
+            aria-label={`${stat.stat.name} stat`}
+            value={animate ? stat.base_stat : 0}
             maxValue={100}
-            color={stat.color}
+            color={stat.base_stat > 50 ? 'success' : 'primary'}
             className="transition-all duration-1000 ease-out"
           />
         </div>
