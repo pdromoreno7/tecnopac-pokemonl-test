@@ -9,3 +9,13 @@ export async function getPokemons() {
     throw error;
   }
 }
+
+export async function getPokemonDetails(pokemonName: string) {
+  try {
+    const response = await apiClient.get(`/pokemon/${pokemonName}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching Pokemon details:", error);
+    throw error;
+  }
+}
