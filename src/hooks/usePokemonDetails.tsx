@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 
 export function usePokemonDetails(name: string) {
   return useQuery({
-    queryKey: ["pokemons"],
+    queryKey: [name],
     queryFn: () => getPokemonDetails(name),
   });
 }

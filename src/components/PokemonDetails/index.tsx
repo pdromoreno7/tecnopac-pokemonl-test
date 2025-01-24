@@ -1,35 +1,20 @@
-"use client";
+'use client';
 
-import { usePokemonDetails } from "@/hooks/usePokemonDetails";
-import { usePokemonListByType } from "@/hooks/usePokemonListByType";
-import {
-  Button,
-  Card,
-  CardBody,
-  Chip,
-  Image,
-  Tab,
-  Tabs,
-  Spinner,
-} from "@heroui/react";
-import { ChevronLeftIcon, HeartIcon } from "lucide-react";
-import Link from "next/link";
-import PokemonList from "../PokemonList";
+import { usePokemonDetails } from '@/hooks/usePokemonDetails';
+import { usePokemonListByType } from '@/hooks/usePokemonListByType';
+import { Button, Card, CardBody, Chip, Image, Tab, Tabs } from '@heroui/react';
+import { ChevronLeftIcon, HeartIcon } from 'lucide-react';
+import Link from 'next/link';
+import PokemonList from '../PokemonList';
+import SpinnerLoading from '../SpinnerLoading';
 
 function PokemonDetails({ name }: { name: string }) {
   const { data, isLoading, isError, error } = usePokemonDetails(name);
 
   const pokemonType = data?.types[0]?.type?.name;
-  const { data: pokemonList, isLoading: isLoadingList } = usePokemonListByType(
-    pokemonType ?? ""
-  );
+  const { data: pokemonList, isLoading: isLoadingList } = usePokemonListByType(pokemonType ?? '');
 
-  if (isLoading || !pokemonType || isLoadingList)
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <Spinner size="lg" />
-      </div>
-    );
+  if (isLoading || !pokemonType || isLoadingList) return <SpinnerLoading />;
   if (isError) return <div>Error: {error.message}</div>;
 
   return (
@@ -86,20 +71,18 @@ function PokemonDetails({ name }: { name: string }) {
                     className="mb-6"
                     items={[
                       {
-                        id: "about",
-                        label: "About",
+                        id: 'about',
+                        label: 'About',
                         content: (
                           <div className="py-4">
                             <p className="text-gray-600 mb-6">
-                              Having been domesticated from birth, Bulbasaur is
-                              regarded as both a rare and well-behaved Pokémon.
+                              Having been domesticated from birth, Bulbasaur is regarded as both a rare and well-behaved
+                              Pokémon.
                             </p>
                             <div className="grid grid-cols-2 gap-4">
                               <div className="flex items-center gap-2">
                                 <span className="text-gray-500">Weight:</span>
-                                <span className="font-medium">
-                                  6.9 kg (15.2 lbs)
-                                </span>
+                                <span className="font-medium">6.9 kg (15.2 lbs)</span>
                               </div>
                               <div className="flex items-center gap-2">
                                 <span className="text-gray-500">Height:</span>
@@ -110,46 +93,38 @@ function PokemonDetails({ name }: { name: string }) {
                         ),
                       },
                       {
-                        id: "stats",
-                        label: "Stats",
+                        id: 'stats',
+                        label: 'Stats',
                         content: (
                           <div className="py-4">
-                            <p className="text-gray-600">
-                              Stats content goes here
-                            </p>
+                            <p className="text-gray-600">Stats content goes here</p>
                           </div>
                         ),
                       },
                       {
-                        id: "moves",
-                        label: "Moves",
+                        id: 'moves',
+                        label: 'Moves',
                         content: (
                           <div className="py-4">
-                            <p className="text-gray-600">
-                              Moves content goes here
-                            </p>
+                            <p className="text-gray-600">Moves content goes here</p>
                           </div>
                         ),
                       },
                       {
-                        id: "evolutions",
-                        label: "Evolutions",
+                        id: 'evolutions',
+                        label: 'Evolutions',
                         content: (
                           <div className="py-4">
-                            <p className="text-gray-600">
-                              Evolutions content goes here
-                            </p>
+                            <p className="text-gray-600">Evolutions content goes here</p>
                           </div>
                         ),
                       },
                       {
-                        id: "location",
-                        label: "Location",
+                        id: 'location',
+                        label: 'Location',
                         content: (
                           <div className="py-4">
-                            <p className="text-gray-600">
-                              Location content goes here
-                            </p>
+                            <p className="text-gray-600">Location content goes here</p>
                           </div>
                         ),
                       },
