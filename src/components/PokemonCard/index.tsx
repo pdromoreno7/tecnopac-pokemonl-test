@@ -1,6 +1,6 @@
 import { Card, CardBody, CardFooter } from '@heroui/card';
 import { Image } from '@heroui/image';
-import { Button, Chip } from '@heroui/react';
+import { Chip } from '@heroui/react';
 import Link from 'next/link';
 
 interface PokemonCardProps {
@@ -21,12 +21,7 @@ function PokemonCard({ name, image, type }: PokemonCardProps) {
             width="100%"
           />
         </CardBody>
-        {/* <CardFooter className="text-small gap-4">
-          <Chip className="font-bold text-lg uppercase ">{name}</Chip>
-          <div className="flex gap-2">
-            <Chip>{type}</Chip>
-          </div>
-        </CardFooter> */}
+
         <CardFooter className="justify-evenly gap-4 before:bg-white/10 border-white/20 border-1 py-1 absolute before:rounded-xl rounded-large bottom-1 shadow-small  z-10">
           <p className="text-tiny text-white/80 uppercase">{name}</p>
           <Chip className="text-tiny text-white bg-black/20" color="success" radius="lg" variant="flat">
