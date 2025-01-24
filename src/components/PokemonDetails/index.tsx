@@ -2,20 +2,22 @@
 
 import { usePokemonDetails } from '@/hooks/usePokemonDetails';
 import { usePokemonListByType } from '@/hooks/usePokemonListByType';
-import { Button, Card, CardBody, Chip, Image, Tab, Tabs } from '@heroui/react';
+import { Button, Card, CardBody, Chip, Image } from '@heroui/react';
 import { ChevronLeftIcon, HeartIcon } from 'lucide-react';
 import Link from 'next/link';
 import PokemonList from '../PokemonList';
 import SpinnerLoading from '../SpinnerLoading';
+import SectionTabsPolemon from './SectionTabsPolemon';
+import { abilites } from '@/interfaces/pokemon.interface';
 
 function PokemonDetails({ name }: { name: string }) {
-  const { data, isLoading, isError, error } = usePokemonDetails(name);
+  const { data, isLoading, isError, error, description, isLoadingDescription } = usePokemonDetails(name);
 
   const pokemonType = data?.types[0]?.type?.name;
-  const { data: pokemonList, isLoading: isLoadingList } = usePokemonListByType(pokemonType ?? '');
+  const { data: pokemonList } = usePokemonListByType(pokemonType ?? '');
 
-  if (isLoading || isLoadingList) return <SpinnerLoading />;
-  if (isError) return <div>Error: {error.message}</div>;
+  if (isLoading) return <SpinnerLoading />;
+  if (isError) return <div>Error: {error?.message}</div>;
 
   return (
     <div className="min-h-screen  from-green-100 to-green-50 p-8">
@@ -47,96 +49,31 @@ function PokemonDetails({ name }: { name: string }) {
                 />
               </div>
 
-              {/* Right column with details */}
               <div className="p-8">
                 <div className="flex items-start justify-between mb-6">
                   <div>
-                    <p className="text-gray-500 text-xl mb-2">#001</p>
+                    <p className="text-gray-500 text-xl mb-2">{`#0${data.id}`}</p>
                     <h1 className="text-4xl font-bold mb-2">{data.name}</h1>
                     <p className="text-gray-600 mb-4">Seed Pokémon</p>
                     <div className="flex gap-2">
                       <Chip color="success" variant="flat">
-                        Grass
+                        {data.types[0].type.name}
                       </Chip>
-                      <Chip color="secondary" variant="flat">
-                        Poison
-                      </Chip>
+                      {data.abilities.map((ability: abilites) => (
+                        <Chip key={ability.ability.name} color="secondary" variant="flat">
+                          {ability.ability.name}
+                        </Chip>
+                      ))}
                     </div>
                   </div>
                 </div>
 
-                <div className="flex w-full flex-col">
-                  <Tabs
-                    aria-label="Pokemon information"
-                    className="mb-6"
-                    items={[
-                      {
-                        id: 'about',
-                        label: 'About',
-                        content: (
-                          <div className="py-4">
-                            <p className="text-gray-600 mb-6">
-                              Having been domesticated from birth, Bulbasaur is regarded as both a rare and well-behaved
-                              Pokémon.
-                            </p>
-                            <div className="grid grid-cols-2 gap-4">
-                              <div className="flex items-center gap-2">
-                                <span className="text-gray-500">Weight:</span>
-                                <span className="font-medium">6.9 kg (15.2 lbs)</span>
-                              </div>
-                              <div className="flex items-center gap-2">
-                                <span className="text-gray-500">Height:</span>
-                                <span className="font-medium">0.7 m</span>
-                              </div>
-                            </div>
-                          </div>
-                        ),
-                      },
-                      {
-                        id: 'stats',
-                        label: 'Stats',
-                        content: (
-                          <div className="py-4">
-                            <p className="text-gray-600">Stats content goes here</p>
-                          </div>
-                        ),
-                      },
-                      {
-                        id: 'moves',
-                        label: 'Moves',
-                        content: (
-                          <div className="py-4">
-                            <p className="text-gray-600">Moves content goes here</p>
-                          </div>
-                        ),
-                      },
-                      {
-                        id: 'evolutions',
-                        label: 'Evolutions',
-                        content: (
-                          <div className="py-4">
-                            <p className="text-gray-600">Evolutions content goes here</p>
-                          </div>
-                        ),
-                      },
-                      {
-                        id: 'location',
-                        label: 'Location',
-                        content: (
-                          <div className="py-4">
-                            <p className="text-gray-600">Location content goes here</p>
-                          </div>
-                        ),
-                      },
-                    ]}
-                  >
-                    {(item) => (
-                      <Tab key={item.id} title={item.label}>
-                        {item.content}
-                      </Tab>
-                    )}
-                  </Tabs>
-                </div>
+                <SectionTabsPolemon
+                  isLoadingDescription={isLoadingDescription}
+                  description={description}
+                  weight={data.weight}
+                  height={data.height}
+                />
               </div>
             </div>
           </CardBody>

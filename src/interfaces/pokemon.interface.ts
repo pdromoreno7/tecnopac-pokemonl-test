@@ -193,15 +193,17 @@ interface TypePokemon {
   };
 }
 
+export interface abilites {
+  ability: {
+    name: string;
+    url: string;
+  };
+  is_hidden: boolean;
+  slot: number;
+}
+
 export interface PokemonDetails {
-  abilities: {
-    ability: {
-      name: string;
-      url: string;
-    };
-    is_hidden: boolean;
-    slot: number;
-  }[];
+  abilities: abilites[];
   base_experience: number;
   cries: {
     latest: string;

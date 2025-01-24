@@ -15,7 +15,7 @@ function PokemonCard({ name, image, type }: PokemonCardProps) {
         <CardBody>
           <Image
             alt={name}
-            className="relative w-full object-contain transition-transform duration-500 ease-in-out transform hover:scale-105  z-20"
+            className="relative w-full object-contain transition-transform duration-500 ease-in-out transform hover:scale-105  "
             radius="lg"
             src={image}
             width="100%"
