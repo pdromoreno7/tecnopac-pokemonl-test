@@ -1,14 +1,35 @@
 "use client";
 
 import { usePokemonDetails } from "@/hooks/usePokemonDetails";
-import { Button, Card, CardBody, Chip, Image, Tab, Tabs } from "@heroui/react";
+import { usePokemonListByType } from "@/hooks/usePokemonListByType";
+import {
+  Button,
+  Card,
+  CardBody,
+  Chip,
+  Image,
+  Tab,
+  Tabs,
+  Spinner,
+} from "@heroui/react";
 import { ChevronLeftIcon, HeartIcon } from "lucide-react";
 import Link from "next/link";
+import PokemonList from "../PokemonList";
 
 function PokemonDetails({ name }: { name: string }) {
   const { data, isLoading, isError, error } = usePokemonDetails(name);
 
-  if (isLoading) return <div>Cargando...</div>;
+  const pokemonType = data?.types[0]?.type?.name;
+  const { data: pokemonList, isLoading: isLoadingList } = usePokemonListByType(
+    pokemonType ?? ""
+  );
+
+  if (isLoading || !pokemonType || isLoadingList)
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <Spinner size="lg" />
+      </div>
+    );
   if (isError) return <div>Error: {error.message}</div>;
 
   return (
@@ -35,7 +56,7 @@ function PokemonDetails({ name }: { name: string }) {
               {/* Left column with image */}
               <div className="p-8 flex items-center justify-center  rounded-t-xl md:rounded-l-xl md:rounded-tr-none bg-gradient-to-br from-green-100 to-green-50">
                 <Image
-                  src={data.sprites.other?.dream_world?.front_default}
+                  src={data.sprites?.other?.dream_world?.front_default}
                   alt="Bulbasaur"
                   className="relative w-96 h-96 object-contain transition-transform duration-500 ease-in-out transform hover:scale-105 "
                 />
@@ -145,6 +166,10 @@ function PokemonDetails({ name }: { name: string }) {
             </div>
           </CardBody>
         </Card>
+        <div>
+          <h2 className="text-2xl font-bold mt-8 mb-4">Related Pokemons</h2>
+          {pokemonList && <PokemonList pokemons={pokemonList} />}
+        </div>
       </div>
     </div>
   );

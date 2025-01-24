@@ -1,13 +1,14 @@
 "use server";
 
+import { pokemonType } from "@/interfaces/pokemon.interface";
 import { apiClient, POKE_API_URL } from "./axiosClient";
 
-async function fetchPokemonDetails(pokemonUrls) {
+async function fetchPokemonDetails(pokemonUrls: string[]) {
   const requests = pokemonUrls.map((url) =>
     apiClient.get(url.replace(POKE_API_URL, ""))
   );
   const responses = await Promise.all(requests);
-  return responses.map((response) => response.data); // Extraer `data` de cada respuesta
+  return responses.map((response) => response.data);
 }
 export async function getPokemons(offset = 0, limit = 20) {
   try {
@@ -16,9 +17,8 @@ export async function getPokemons(offset = 0, limit = 20) {
     );
     const data = response.data;
 
-    // Obtener los detalles de cada Pokémon
     const detailedPokemon = await fetchPokemonDetails(
-      data.results.map((p) => p.url)
+      data.results.map((pokemon: pokemonType) => pokemon.url)
     );
 
     return detailedPokemon;
@@ -34,6 +34,23 @@ export async function getPokemonDetails(pokemonName: string) {
     return response.data;
   } catch (error) {
     console.error("Error fetching Pokemon details:", error);
+    throw error;
+  }
+}
+
+export async function getPokemonsByType(pokemonType: string) {
+  try {
+    const response = await apiClient.get(`/type/${pokemonType}`);
+    const data = response.data;
+    const detailedPokemon = await fetchPokemonDetails(
+      data.pokemon.map(
+        (pokemon: { pokemon: pokemonType }) => pokemon.pokemon.url
+      )
+    );
+
+    return detailedPokemon;
+  } catch (error) {
+    console.error("Error fetching Pokemon species:", error);
     throw error;
   }
 }

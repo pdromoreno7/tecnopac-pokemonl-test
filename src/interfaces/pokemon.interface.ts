@@ -1,21 +1,4 @@
-interface DreamWorld {
-  front_default: string;
-  front_female: string;
-}
-
-interface Home {
-  front_default: string;
-  front_female: string;
-  front_shiny: string;
-  front_shiny_female: string;
-}
-
-interface OfficialArtwork {
-  front_default: string;
-  front_shiny: string;
-}
-
-interface Showdown {
+interface Sprites {
   back_default: string;
   back_female: string;
   back_shiny: string;
@@ -24,26 +7,182 @@ interface Showdown {
   front_female: string;
   front_shiny: string;
   front_shiny_female: string;
-}
-
-interface Other {
-  dream_world: DreamWorld;
-  home: Home;
-  "official-artwork": OfficialArtwork;
-  showdown: Showdown;
-}
-
-interface Sprites {
-  back_default: string | null;
-  back_female: string | null;
-  back_shiny: string | null;
-  back_shiny_female: string | null;
-  front_default: string | null;
-  front_female: string | null;
-  front_shiny: string | null;
-  front_shiny_female: string | null;
-  other: Other;
-  versions: Record<string, any>; // Puedes definir una interfaz más específica si conoces la estructura
+  other: {
+    dream_world: {
+      front_default: string;
+      front_female: string;
+    };
+    home: {
+      front_default: string;
+      front_female: string;
+      front_shiny: string;
+      front_shiny_female: string;
+    };
+    "official-artwork": {
+      front_default: string;
+      front_shiny: string;
+    };
+    showdown: {
+      back_default: string;
+      back_female: string;
+      back_shiny: string;
+      back_shiny_female: string;
+      front_default: string;
+      front_female: string;
+      front_shiny: string;
+      front_shiny_female: string;
+    };
+  };
+  versions: {
+    "generation-i": {
+      "red-blue": {
+        back_default: string;
+        back_gray: string;
+        back_transparent: string;
+        front_default: string;
+        front_gray: string;
+        front_transparent: string;
+      };
+      yellow: {
+        back_default: string;
+        back_gray: string;
+        back_transparent: string;
+        front_default: string;
+        front_gray: string;
+        front_transparent: string;
+      };
+    };
+    "generation-ii": {
+      crystal: {
+        back_default: string;
+        back_shiny: string;
+        back_shiny_transparent: string;
+        back_transparent: string;
+        front_default: string;
+        front_shiny: string;
+        front_shiny_transparent: string;
+        front_transparent: string;
+      };
+      gold: {
+        back_default: string;
+        back_shiny: string;
+        front_default: string;
+        front_shiny: string;
+        front_transparent: string;
+      };
+      silver: {
+        back_default: string;
+        back_shiny: string;
+        front_default: string;
+        front_shiny: string;
+        front_transparent: string;
+      };
+    };
+    "generation-iii": {
+      emerald: {
+        front_default: string;
+        front_shiny: string;
+      };
+      "firered-leafgreen": {
+        back_default: string;
+        back_shiny: string;
+        front_default: string;
+        front_shiny: string;
+      };
+      "ruby-sapphire": {
+        back_default: string;
+        back_shiny: string;
+        front_default: string;
+        front_shiny: string;
+      };
+    };
+    "generation-iv": {
+      "diamond-pearl": {
+        back_default: string;
+        back_female: string;
+        back_shiny: string;
+        back_shiny_female: string;
+        front_default: string;
+        front_female: string;
+        front_shiny: string;
+        front_shiny_female: string;
+      };
+      "heartgold-soulsilver": {
+        back_default: string;
+        back_female: string;
+        back_shiny: string;
+        back_shiny_female: string;
+        front_default: string;
+        front_female: string;
+        front_shiny: string;
+        front_shiny_female: string;
+      };
+      platinum: {
+        back_default: string;
+        back_female: string;
+        back_shiny: string;
+        back_shiny_female: string;
+        front_default: string;
+        front_female: string;
+        front_shiny: string;
+        front_shiny_female: string;
+      };
+    };
+    "generation-v": {
+      "black-white": {
+        animated: {
+          back_default: string;
+          back_female: string;
+          back_shiny: string;
+          back_shiny_female: string;
+          front_default: string;
+          front_female: string;
+          front_shiny: string;
+          front_shiny_female: string;
+        };
+        back_default: string;
+        back_female: string;
+        back_shiny: string;
+        back_shiny_female: string;
+        front_default: string;
+        front_female: string;
+        front_shiny: string;
+        front_shiny_female: string;
+      };
+    };
+    "generation-vi": {
+      "omegaruby-alphasapphire": {
+        front_default: string;
+        front_female: string;
+        front_shiny: string;
+        front_shiny_female: string;
+      };
+      "x-y": {
+        front_default: string;
+        front_female: string;
+        front_shiny: string;
+        front_shiny_female: string;
+      };
+    };
+    "generation-vii": {
+      icons: {
+        front_default: string;
+        front_female: string;
+      };
+      "ultra-sun-ultra-moon": {
+        front_default: string;
+        front_female: string;
+        front_shiny: string;
+        front_shiny_female: string;
+      };
+    };
+    "generation-viii": {
+      icons: {
+        front_default: string;
+        front_female: string;
+      };
+    };
+  };
 }
 
 export interface PokemonDetails {
@@ -54,7 +193,7 @@ export interface PokemonDetails {
     };
     is_hidden: boolean;
     slot: number;
-  };
+  }[];
   base_experience: number;
   cries: {
     latest: string;
@@ -63,16 +202,9 @@ export interface PokemonDetails {
   forms: {
     name: string;
     url: string;
-  };
-  game_indices: {
-    game_index: number;
-    version: {
-      name: string;
-      url: string;
-    };
-  };
+  }[];
   height: number;
-  held_items: [];
+  held_items: string[];
   id: number;
   is_default: boolean;
   location_area_encounters: string;
@@ -91,21 +223,17 @@ export interface PokemonDetails {
         name: string;
         url: string;
       };
-    };
-  };
+    }[];
+  }[];
   name: string;
   order: number;
-  species: {
-    name: string;
-    url: string;
-  };
   sprites: Sprites;
-  stats?: any;
-  types?: any;
+  stats: object[];
+  types: object[];
   weight: number;
 }
 
-// export interface PokemonType {
-//   name: string;
-//   url: string;
-// }
+export interface pokemonType {
+  name: string;
+  url: string;
+}
