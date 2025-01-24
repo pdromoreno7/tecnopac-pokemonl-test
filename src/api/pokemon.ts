@@ -4,7 +4,7 @@ import { pokemonType } from '@/interfaces/pokemon.interface';
 import { apiClient } from './axiosClient';
 import { fetchPokemonDetails } from '@/lib/fetchData';
 
-export async function getPokemons(name?: string) {
+export async function getPokemons(name?: string | null) {
   console.log('🚀 ~ getPokemons ~ name:', name);
   try {
     const response = await apiClient.get(`/pokemon${name ? `/${name}` : ''}`);
