@@ -1,26 +1,37 @@
 import { Card, CardBody, CardFooter } from '@heroui/card';
 import { Image } from '@heroui/image';
+import { Button, Chip } from '@heroui/react';
 import Link from 'next/link';
 
 interface PokemonCardProps {
   name: string;
   image: string;
+  type: string;
 }
-function PokemonCard({ name, image }: PokemonCardProps) {
+function PokemonCard({ name, image, type }: PokemonCardProps) {
   return (
     <Link href={`/${name}`}>
       <Card className="cursor-pointer h-[450px]">
         <CardBody>
           <Image
             alt={name}
-            className="relative w-full object-contain transition-transform duration-500 ease-in-out transform hover:scale-105"
+            className="relative w-full object-contain transition-transform duration-500 ease-in-out transform hover:scale-105  z-20"
             radius="lg"
             src={image}
             width="100%"
           />
         </CardBody>
-        <CardFooter className="text-small justify-between">
-          <b>{name}</b>
+        {/* <CardFooter className="text-small gap-4">
+          <Chip className="font-bold text-lg uppercase ">{name}</Chip>
+          <div className="flex gap-2">
+            <Chip>{type}</Chip>
+          </div>
+        </CardFooter> */}
+        <CardFooter className="justify-evenly gap-4 before:bg-white/10 border-white/20 border-1 py-1 absolute before:rounded-xl rounded-large bottom-1 shadow-small  z-10">
+          <p className="text-tiny text-white/80 uppercase">{name}</p>
+          <Chip className="text-tiny text-white bg-black/20" color="success" radius="lg" variant="flat">
+            {type}
+          </Chip>
         </CardFooter>
       </Card>
     </Link>

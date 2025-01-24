@@ -1,4 +1,3 @@
-import LogoPokemon from '@/assets/LogoPokemon';
 import PokemonListWithSearch from '@/components/PokemonListWithSearch';
 
 export default function Home() {

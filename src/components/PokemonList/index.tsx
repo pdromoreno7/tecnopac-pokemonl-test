@@ -1,5 +1,5 @@
-import PokemonCard from "../PokemonCard";
-import { PokemonDetails } from "@/interfaces/pokemon.interface";
+import PokemonCard from '../PokemonCard';
+import { PokemonDetails } from '@/interfaces/pokemon.interface';
 
 interface PokemonListProps {
   pokemons: PokemonDetails[];
@@ -13,6 +13,7 @@ function PokemonList({ pokemons }: PokemonListProps) {
           key={pokemon.id}
           image={pokemon?.sprites.other?.dream_world?.front_default}
           name={pokemon.name}
+          type={pokemon.types[0].type.name}
         />
       ))}
     </div>
