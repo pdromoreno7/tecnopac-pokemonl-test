@@ -18,7 +18,7 @@ interface Sprites {
       front_shiny: string;
       front_shiny_female: string;
     };
-    "official-artwork": {
+    'official-artwork': {
       front_default: string;
       front_shiny: string;
     };
@@ -34,8 +34,8 @@ interface Sprites {
     };
   };
   versions: {
-    "generation-i": {
-      "red-blue": {
+    'generation-i': {
+      'red-blue': {
         back_default: string;
         back_gray: string;
         back_transparent: string;
@@ -52,7 +52,7 @@ interface Sprites {
         front_transparent: string;
       };
     };
-    "generation-ii": {
+    'generation-ii': {
       crystal: {
         back_default: string;
         back_shiny: string;
@@ -78,26 +78,26 @@ interface Sprites {
         front_transparent: string;
       };
     };
-    "generation-iii": {
+    'generation-iii': {
       emerald: {
         front_default: string;
         front_shiny: string;
       };
-      "firered-leafgreen": {
+      'firered-leafgreen': {
         back_default: string;
         back_shiny: string;
         front_default: string;
         front_shiny: string;
       };
-      "ruby-sapphire": {
+      'ruby-sapphire': {
         back_default: string;
         back_shiny: string;
         front_default: string;
         front_shiny: string;
       };
     };
-    "generation-iv": {
-      "diamond-pearl": {
+    'generation-iv': {
+      'diamond-pearl': {
         back_default: string;
         back_female: string;
         back_shiny: string;
@@ -107,7 +107,7 @@ interface Sprites {
         front_shiny: string;
         front_shiny_female: string;
       };
-      "heartgold-soulsilver": {
+      'heartgold-soulsilver': {
         back_default: string;
         back_female: string;
         back_shiny: string;
@@ -128,8 +128,8 @@ interface Sprites {
         front_shiny_female: string;
       };
     };
-    "generation-v": {
-      "black-white": {
+    'generation-v': {
+      'black-white': {
         animated: {
           back_default: string;
           back_female: string;
@@ -150,33 +150,33 @@ interface Sprites {
         front_shiny_female: string;
       };
     };
-    "generation-vi": {
-      "omegaruby-alphasapphire": {
+    'generation-vi': {
+      'omegaruby-alphasapphire': {
         front_default: string;
         front_female: string;
         front_shiny: string;
         front_shiny_female: string;
       };
-      "x-y": {
+      'x-y': {
         front_default: string;
         front_female: string;
         front_shiny: string;
         front_shiny_female: string;
       };
     };
-    "generation-vii": {
+    'generation-vii': {
       icons: {
         front_default: string;
         front_female: string;
       };
-      "ultra-sun-ultra-moon": {
+      'ultra-sun-ultra-moon': {
         front_default: string;
         front_female: string;
         front_shiny: string;
         front_shiny_female: string;
       };
     };
-    "generation-viii": {
+    'generation-viii': {
       icons: {
         front_default: string;
         front_female: string;
@@ -185,15 +185,25 @@ interface Sprites {
   };
 }
 
+interface TypePokemon {
+  slot: number;
+  type: {
+    name: string;
+    url: string;
+  };
+}
+
+export interface abilites {
+  ability: {
+    name: string;
+    url: string;
+  };
+  is_hidden: boolean;
+  slot: number;
+}
+
 export interface PokemonDetails {
-  abilities: {
-    ability: {
-      name: string;
-      url: string;
-    };
-    is_hidden: boolean;
-    slot: number;
-  }[];
+  abilities: abilites[];
   base_experience: number;
   cries: {
     latest: string;
@@ -229,7 +239,7 @@ export interface PokemonDetails {
   order: number;
   sprites: Sprites;
   stats: object[];
-  types: object[];
+  types: TypePokemon[];
   weight: number;
 }
 
