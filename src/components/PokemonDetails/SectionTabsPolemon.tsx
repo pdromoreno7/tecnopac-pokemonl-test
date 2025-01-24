@@ -8,9 +8,15 @@ interface SectionTabsPolemonProps {
   description: string;
   weight: string;
   height: string;
+  stats: {
+    base_stat: number;
+    stat: {
+      name: string;
+    };
+  }[];
 }
 
-function SectionTabsPolemon({ isLoadingDescription, description, weight, height }: SectionTabsPolemonProps) {
+function SectionTabsPolemon({ isLoadingDescription, description, weight, height, stats }: SectionTabsPolemonProps) {
   return (
     <div className="flex w-full flex-col">
       <Tabs
@@ -49,7 +55,7 @@ function SectionTabsPolemon({ isLoadingDescription, description, weight, height 
             label: 'Stats',
             content: (
               <div className="py-4">
-                <StatsSection />
+                <StatsSection stats={stats} />
               </div>
             ),
           },

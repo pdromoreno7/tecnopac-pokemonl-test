@@ -73,6 +73,7 @@ function PokemonDetails({ name }: { name: string }) {
                   description={description}
                   weight={data.weight}
                   height={data.height}
+                  stats={data.stats}
                 />
               </div>
             </div>
