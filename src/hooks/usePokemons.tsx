@@ -5,5 +5,6 @@ export function usePokemons(pokemon: string | null) {
   return useQuery({
     queryKey: [pokemon ?? 'pokemons'],
     queryFn: () => getPokemons(pokemon ?? null),
+    retry: true,
   });
 }

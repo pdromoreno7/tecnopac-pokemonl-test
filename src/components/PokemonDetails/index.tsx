@@ -10,11 +10,12 @@ import SpinnerLoading from '../SpinnerLoading';
 
 function PokemonDetails({ name }: { name: string }) {
   const { data, isLoading, isError, error } = usePokemonDetails(name);
+  console.log('🚀 ~ PokemonDetails ~ data:', data);
 
   const pokemonType = data?.types[0]?.type?.name;
   const { data: pokemonList, isLoading: isLoadingList } = usePokemonListByType(pokemonType ?? '');
 
-  if (isLoading || !pokemonType || isLoadingList) return <SpinnerLoading />;
+  if (isLoading || isLoadingList || !pokemonType) return <SpinnerLoading />;
   if (isError) return <div>Error: {error.message}</div>;
 
   return (
@@ -52,7 +53,7 @@ function PokemonDetails({ name }: { name: string }) {
                 <div className="flex items-start justify-between mb-6">
                   <div>
                     <p className="text-gray-500 text-xl mb-2">#001</p>
-                    <h1 className="text-4xl font-bold mb-2">Bulbasaur</h1>
+                    <h1 className="text-4xl font-bold mb-2">{data.name}</h1>
                     <p className="text-gray-600 mb-4">Seed Pokémon</p>
                     <div className="flex gap-2">
                       <Chip color="success" variant="flat">

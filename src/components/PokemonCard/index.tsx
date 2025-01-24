@@ -1,12 +1,13 @@
-import { Card, CardBody, CardFooter } from "@heroui/card";
-import { Image } from "@heroui/image";
-import Link from "next/link";
+import { Card, CardBody, CardFooter } from '@heroui/card';
+import { Image } from '@heroui/image';
+import Link from 'next/link';
 
 interface PokemonCardProps {
   name: string;
   image: string;
 }
 function PokemonCard({ name, image }: PokemonCardProps) {
+  console.log('🚀 ~ PokemonCard ~ name:', name);
   return (
     <Link href={`/${name}`}>
       <Card className="cursor-pointer h-[450px]">
