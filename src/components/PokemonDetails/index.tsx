@@ -10,12 +10,12 @@ import SpinnerLoading from '../SpinnerLoading';
 
 function PokemonDetails({ name }: { name: string }) {
   const { data, isLoading, isError, error } = usePokemonDetails(name);
-  console.log('🚀 ~ PokemonDetails ~ data:', data);
+  console.log('🚀 ~ PokemonDetails ~ isError:', isError);
 
   const pokemonType = data?.types[0]?.type?.name;
   const { data: pokemonList, isLoading: isLoadingList } = usePokemonListByType(pokemonType ?? '');
 
-  if (isLoading || isLoadingList || !pokemonType) return <SpinnerLoading />;
+  if (isLoading || isLoadingList) return <SpinnerLoading />;
   if (isError) return <div>Error: {error.message}</div>;
 
   return (

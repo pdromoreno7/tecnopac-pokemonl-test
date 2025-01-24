@@ -17,7 +17,7 @@ export async function getPokemons(name?: string | null) {
     return [data];
   } catch (error) {
     console.error('Error fetching Pokémon list:', error);
-    throw new Error('Failed to fetch Pokémon list');
+    throw error;
   }
 }
 
