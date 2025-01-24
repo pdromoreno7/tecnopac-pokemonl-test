@@ -3,11 +3,11 @@
 import { pokemonType } from '@/interfaces/pokemon.interface';
 import { apiClient } from './axiosClient';
 import { fetchPokemonDetails } from '@/lib/fetchData';
+import normalizeStringToLowerCase from '@/utils/utils';
 
 export async function getPokemons(name?: string | null) {
-  console.log('🚀 ~ getPokemons ~ name:', name);
   try {
-    const response = await apiClient.get(`/pokemon${name ? `/${name}` : ''}`);
+    const response = await apiClient.get(`/pokemon${name ? `/${normalizeStringToLowerCase(name)}` : ''}`);
     const data = response.data;
 
     if (!name) {
