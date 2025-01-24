@@ -11,7 +11,6 @@ function PokemonListWithSearch() {
   const [selectedPokemon, setSelectedPokemon] = useState<string | null>(null);
 
   const { data: pokemons, isLoading, isError } = usePokemons(selectedPokemon);
-  console.log('🚀 ~ PokemonListWithSearch ~ isError:', isError);
 
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);

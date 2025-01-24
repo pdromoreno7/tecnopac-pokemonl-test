@@ -22,7 +22,7 @@ function PokemonCard({ name, image, type }: PokemonCardProps) {
           />
         </CardBody>
 
-        <CardFooter className="justify-evenly gap-4 before:bg-white/10 border-white/20 border-1 py-1 absolute before:rounded-xl rounded-large bottom-1 shadow-small  z-10">
+        <CardFooter className="justify-evenly gap-4 before:bg-white/10  py-1 absolute before:rounded-xl rounded-large bottom-1 shadow-small  z-10">
           <p className="text-tiny text-white/80 uppercase">{name}</p>
           <Chip className="text-tiny text-white bg-black/20" color="success" radius="lg" variant="flat">
             {type}

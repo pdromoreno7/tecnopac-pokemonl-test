@@ -10,7 +10,6 @@ import SpinnerLoading from '../SpinnerLoading';
 
 function PokemonDetails({ name }: { name: string }) {
   const { data, isLoading, isError, error } = usePokemonDetails(name);
-  console.log('🚀 ~ PokemonDetails ~ isError:', isError);
 
   const pokemonType = data?.types[0]?.type?.name;
   const { data: pokemonList, isLoading: isLoadingList } = usePokemonListByType(pokemonType ?? '');
