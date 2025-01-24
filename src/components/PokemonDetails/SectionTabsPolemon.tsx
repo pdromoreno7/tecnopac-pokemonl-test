@@ -1,6 +1,7 @@
 'use client';
 import { Skeleton, Tab, Tabs } from '@heroui/react';
 import React from 'react';
+import { StatsSection } from './StatsSection';
 
 interface SectionTabsPolemonProps {
   isLoadingDescription: boolean;
@@ -48,7 +49,7 @@ function SectionTabsPolemon({ isLoadingDescription, description, weight, height 
             label: 'Stats',
             content: (
               <div className="py-4">
-                <p className="text-gray-600">Stats content goes here</p>
+                <StatsSection />
               </div>
             ),
           },
